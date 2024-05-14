@@ -214,7 +214,22 @@
      Scrivi una funzione che renda verde il background di ogni lista non ordinata
     */
 
-    const paintItGreen = function () { }
+    const paintItGreen = function () {
+      const listArray = document.getElementsByTagName("ul")
+      for (let i = 0; i < listArray.length; i++) {
+        listArray[i].setAttribute("style", "background-color:green")
+      }
+    }
+
+    const paintItGreen2 = () => {
+      const listArray = Array.from(document.getElementsByTagName("ul")) /* getElementsById restituisce una HTMLCollection --- Array.from() la converte in un array */
+      listArray.forEach(currentUl => {
+        currentUl.setAttribute("style", "background-color: green")
+      });
+    }
+
+    /* paintItGreen() */
+    paintItGreen2()
 
     /* ESERCIZIO 9
      Scrivi una funzione che rimuova l'ultima lettera dall'h1 ogni volta che l'utente lo clicca
