@@ -178,7 +178,23 @@
      Scrivi una funzione che aggiunga un paragrafo al primo div
   */
 
-    const addParagraph = function () { }
+    const addParagraph = function () {
+      const newP = document.createElement("p")
+      newP.innerText = "Ciao sono un nuovo p"
+      const firstDiv = document.getElementsByTagName("div")[0]
+      firstDiv.appendChild(newP)
+    }
+
+    const addParagraph2 = () => {
+      const newP = document.createElement("p")
+      newP.innerText = "Ciao sono un nuovo p"
+      const firstDiv = document.getElementsByTagName("div")[0]
+      firstDiv.appendChild(newP)
+    }
+    /* addParagraph() */
+    addParagraph2()
+
+
 
     /* ESERCIZIO 7
      Scrivi una funzione che faccia scomparire la prima lista non ordinata
