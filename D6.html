@@ -138,7 +138,7 @@
      Scrivi una funzione che cambi la proprietà href di ogni link (tranne quello nel footer) con il valore https://www.google.com
     */
 
-    const changeUrls = function () {
+    /* const changeUrls = function () {
       const anchor = document.getElementsByTagName("a")[0]
       anchor.setAttribute("href", "https://google.com")
       anchor.setAttribute("target", "_blank")
@@ -151,13 +151,22 @@
     }
 
     /* changeUrls() */
-    changeUrls2()
+    // changeUrls2()
+
+    const changeUrls = function () {
+      const links = document.querySelectorAll("a:not(footer a)")
+      for (let i = 0; i < links.length; i++) {
+        links[i].href = "https://www.google.com"
+      }
+    }
+
+    changeUrls()
 
     /* ESERCIZIO 5
      Scrivi una funzione che aggiunga un nuovo elemento lista alla seconda lista non ordinata
   */
 
-    const addToTheSecond = function () {
+    /* const addToTheSecond = function () {
       const newLi = document.createElement("li")
       newLi.innerText = "4th"
       const secondList = document.getElementById("secondList")
@@ -171,14 +180,23 @@
       secondList.appendChild(newLi)
     }
 
-    /* addToTheSecond() */
-    addToTheSecond2()
+    addToTheSecond()
+    addToTheSecond2() */
+
+    const addToTheSecond = function (content) {
+      const ul = document.getElementById("secondList")
+      const li = document.createElement("li")
+      li.innerText = content
+      ul.appendChild(li)
+    }
+
+    addToTheSecond("4th")
 
     /* ESERCIZIO 6
      Scrivi una funzione che aggiunga un paragrafo al primo div
   */
 
-    const addParagraph = function () {
+    /* const addParagraph = function () {
       const newP = document.createElement("p")
       newP.innerText = "Ciao sono un nuovo p"
       const firstDiv = document.getElementsByTagName("div")[0]
@@ -191,14 +209,24 @@
       const firstDiv = document.getElementsByTagName("div")[0]
       firstDiv.appendChild(newP)
     }
-    /* addParagraph() */
-    addParagraph2()
+    addParagraph()
+    addParagraph2() */
+
+    const addParagraph = function (content) {
+      const div = document.querySelector("div")
+      const newP = document.createElement("p")
+      newP.innerText = content
+      div.appendChild(newP)
+    }
+
+    addParagraph("Si ma la seconda colazione?")
+
 
     /* ESERCIZIO 7
      Scrivi una funzione che faccia scomparire la prima lista non ordinata
   */
 
-    const hideFirstUl = function () {
+    /* const hideFirstUl = function () {
       const firstList = document.getElementById("firstList")
       firstList.setAttribute("style", "opacity: 0")
     }
@@ -207,14 +235,20 @@
       const firstList = document.getElementById("firstList")
       firstList.setAttribute("style", "opacity: 0")
     }
-    /* hideFirstUl() */
-    hideFirstUl2()
+    hideFirstUl()
+    hideFirstUl2() */
+
+    const hideFirstUl = function () {
+      const ul = document.getElementById("firstList")
+      ul.remove()
+    }
+    hideFirstUl()
 
     /* ESERCIZIO 8 
      Scrivi una funzione che renda verde il background di ogni lista non ordinata
     */
 
-    const paintItGreen = function () {
+    /* const paintItGreen = function () {
       const listArray = document.getElementsByTagName("ul")
       for (let i = 0; i < listArray.length; i++) {
         listArray[i].setAttribute("style", "background-color:green")
@@ -222,24 +256,34 @@
     }
 
     const paintItGreen2 = () => {
-      const listArray = Array.from(document.getElementsByTagName("ul")) /* getElementsById restituisce una HTMLCollection --- Array.from() la converte in un array */
+      const listArray = Array.from(document.getElementsByTagName("ul")) getElementsById restituisce una HTMLCollection --- Array.from() la converte in un array
       listArray.forEach(currentUl => {
         currentUl.setAttribute("style", "background-color: green")
       });
     }
+    paintItGreen()
+    paintItGreen2() */
 
-    /* paintItGreen() */
-    paintItGreen2()
+    const paintItGreen = function () {
+      const uls = document.querySelectorAll("ul")
+      for (let i = 0; i < uls.length; i++) {
+        uls[i].setAttribute("style", "background-color: green")
+      }
+    }
+
+    paintItGreen()
+
+
 
     /* ESERCIZIO 9
      Scrivi una funzione che rimuova l'ultima lettera dall'h1 ogni volta che l'utente lo clicca
     */
 
     document.querySelector("h1").addEventListener("click", makeItClickable = () => {
-      const titolo = document.querySelector("h1")
-      const testo = titolo.innerText
-      const nuovoTesto = testo.slice(0, -1)
-      titolo.innerText = nuovoTesto
+      const title = document.querySelector("h1")
+      const text = title.innerText
+      const nuovoText = text.slice(0, -1)
+      title.innerText = nuovoText
     })
 
     /* ESERCIZIO 10
@@ -257,7 +301,60 @@
      La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
   */
 
-    const generateTable = function () { }
+    const generateTable = function () {
+      const container = document.getElementById("tableArea")
+      const table = document.createElement("table")
+      table.style.width = "100%"
+
+      const firstRow = document.createElement("tr")
+
+      const thImage = document.createElement("th")
+      thImage.innerText = "Immagine"
+      const thProduct = document.createElement("th")
+      thProduct.innerText = "Prodotto"
+      const thQuantity = document.createElement("th")
+      thQuantity.innerText = "Quantità"
+      const thPrice = document.createElement("th")
+      thPrice.innerText = "Prezzo"
+
+      const images = [
+        'https://m.media-amazon.com/images/I/81yJf4K+L1L._AC_SY450_.jpg',
+        'https://m.media-amazon.com/images/I/61MRTh9xotL._AC_SX679_.jpg',
+        'https://www.tradeinn.com/f/13805/138054505/samsung-smartphone-galaxy-s21-5g-8gb-128gb-6.2.jpg',
+        'https://i01.appmifile.com/v1/MI_18455B3E4DA706226CF7535A58E875F0267/pms_1661333885.70133010!500x500.png',
+        'https://tomatosmartphone.it/wp-content/uploads/2022/06/EU-IN_Green.png',
+      ]
+
+      firstRow.appendChild(thImage)
+      firstRow.appendChild(thProduct)
+      firstRow.appendChild(thQuantity)
+      firstRow.appendChild(thPrice)
+      table.appendChild(firstRow)
+
+      for (let i = 0; i < images.length; i++) {
+        const newRow = document.createElement('tr')
+
+        const tdImage = document.createElement('td')
+        tdImage.innerHTML = `<img src=${images[i]} alt="smartphone" height="200" />`
+        const tdProduct = document.createElement('td')
+        tdProduct.innerText = 'Smartphone'
+        const tdQuantity = document.createElement('td')
+        tdQuantity.innerText = Math.floor(Math.random() * 50)
+        const tdPrice = document.createElement('td')
+        tdPrice.innerText = Math.floor(Math.random() * 500) + '€'
+
+        newRow.appendChild(tdImage)
+        newRow.appendChild(tdProduct)
+        newRow.appendChild(tdQuantity)
+        newRow.appendChild(tdPrice)
+        table.appendChild(newRow)
+      }
+
+      container.appendChild(table)
+    }
+
+
+    generateTable()
 
     /* ESERCIZIO 12
      Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
@@ -275,7 +372,11 @@
     Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
   */
 
-    const changeColorWithRandom = function () { }
+    const subTitle = document.getElementById("changeMyColor")
+    subTitle.addEventListener("click", changeColorWithRandom = () => {
+
+    })
+    /*     const changeColorWithRandom = function () {} */
   </script>
 </body>
 
