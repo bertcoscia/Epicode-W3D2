@@ -157,7 +157,22 @@
      Scrivi una funzione che aggiunga un nuovo elemento lista alla seconda lista non ordinata
   */
 
-    const addToTheSecond = function () { }
+    const addToTheSecond = function () {
+      const newLi = document.createElement("li")
+      newLi.innerText = "4th"
+      const secondList = document.getElementById("secondList")
+      secondList.appendChild(newLi)
+    }
+
+    const addToTheSecond2 = () => {
+      const newLi = document.createElement("li")
+      newLi.innerText = "4th"
+      const secondList = document.getElementById("secondList")
+      secondList.appendChild(newLi)
+    }
+
+    /* addToTheSecond() */
+    addToTheSecond2()
 
     /* ESERCIZIO 6
      Scrivi una funzione che aggiunga un paragrafo al primo div
