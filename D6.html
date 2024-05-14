@@ -133,11 +133,25 @@
 
     /* changePcontent() */
     changePcontent2()
+
     /* ESERCIZIO 4
      Scrivi una funzione che cambi la proprietà href di ogni link (tranne quello nel footer) con il valore https://www.google.com
     */
 
-    const changeUrls = function () { }
+    const changeUrls = function () {
+      const anchor = document.getElementsByTagName("a")[0]
+      anchor.setAttribute("href", "https://google.com")
+      anchor.setAttribute("target", "_blank")
+    }
+
+    const changeUrls2 = () => {
+      const anchor = document.getElementsByTagName("a")[0]
+      anchor.setAttribute("href", "https://google.com")
+      anchor.setAttribute("target", "_blank")
+    }
+
+    /* changeUrls() */
+    changeUrls2()
 
     /* ESERCIZIO 5
      Scrivi una funzione che aggiunga un nuovo elemento lista alla seconda lista non ordinata
